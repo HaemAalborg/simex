@@ -2,8 +2,14 @@ Package: simex
 Type: Package
 Version: 1.7
 Date: 2016-03-25
-Imports: stats, graphics
-Suggests: mgcv, nlme, MASS
+Imports:
+    stats,
+    graphics
+Suggests:
+    mgcv,
+    nlme,
+    MASS,
+	survival
 Title: SIMEX- And MCSIMEX-Algorithm for Measurement Error Models
 Author: Wolfgang Lederer <Wolfgang.Lederer@gmail.com>, Heidi Seibold
     <heidi.bold@gmail.com>, Helmut Küchenhoff <Kuechenhoff@stat.uni-muenchen.de>
@@ -16,8 +22,5 @@ License: GPL-3
 Encoding: UTF-8
 LazyLoad: yes
 ZipData: yes
-Packaged: 2017-09-07 15:27:29 UTC; Wolfgang
+Packaged: Fri MAR 25 18:00:00 2016; wolfgang
 RoxygenNote: 6.0.1
-NeedsCompilation: no
-Repository: CRAN
-Date/Publication: 2017-09-07 18:21:17 UTC
