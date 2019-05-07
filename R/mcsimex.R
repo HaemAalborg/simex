@@ -173,6 +173,10 @@ mcsimex <- function(model,
     stop("The option Hessian must be enabled in the naive model", call. = FALSE)
   if (class(model)[1] == "polr" && asymptotic)
     stop("Asymptotic estimation is not supported for polr models", call. = FALSE)
+  if (class(model)[1] == "coxph" && asymptotic)
+    stop("Asymptotic estimation is not supported for coxph models", call. = FALSE)
+  if (class(model)[1] == "coxph" && is.null(model$model))
+    stop("The option model = TRUE must be enabled for coxph models", call. = FALSE)
   if (!any(names(model) == "x") && asymptotic && class(model)[1] != "polr")
     stop("The option x must be enabled in the naive model for asymptotic variance estimation",
          call. = FALSE)
