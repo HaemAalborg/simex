@@ -177,6 +177,13 @@ mcsimex <- function(model,
     stop("Asymptotic estimation is not supported for coxph models", call. = FALSE)
   if (class(model)[1] == "coxph" && is.null(model$model))
     stop("The option model = TRUE must be enabled for coxph models", call. = FALSE)
+  if (class(model)[1] == "coxph" && grep("Surv\\(", names(model$model)[1]) == 1){
+    timeEventMatrix <- as.matrix(xx$model[[1]])
+    timeName <- sub("Surv\\(","",strsplit(names(xx$model)[1], ", ")[[1]][1])
+    eventName <- sub("\\)","",strsplit(names(xx$model)[1], ", ")[[1]][2])
+    colnames(timeEventMatrix) <- c(timeName, eventName)
+    model$model <- cbind(model$model, timeEventMatrix)
+  }
   if (!any(names(model) == "x") && asymptotic && class(model)[1] != "polr")
     stop("The option x must be enabled in the naive model for asymptotic variance estimation",
          call. = FALSE)
